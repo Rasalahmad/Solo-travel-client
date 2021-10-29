@@ -1,0 +1,16 @@
+
+.service{
+    border: 1px solid blue;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 15px 0;
+}
+.service-img{
+    width: 100%;
+    height: 300px;
+}
+
+.service-img :hover{
+    transform: scale(1.2);
+    border-radius: 15px;
+}
