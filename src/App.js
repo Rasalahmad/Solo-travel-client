@@ -17,6 +17,7 @@ import UserDetails from './components/UserDetails/UserDetails';
 import Dashboard from './components/Admin/Dashboard/Dashboard';
 import AllBook from './components/AllBook/AllBook';
 import Footer from './components/Shared/Footer/Footer';
+import NotFound from './components/Shared/NotFound/NotFound';
 
 function App() {
   return (
@@ -62,6 +63,9 @@ function App() {
         </Route>
         <Route path = '/dashboard'>
           <Dashboard></Dashboard>
+        </Route>
+        <Route path = '*'>
+          <NotFound></NotFound>
         </Route>
       </Switch>
       <Footer></Footer>
