@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-
+import './MyOrder.css';
 
 
 const MyOrder = () => {
@@ -32,6 +32,9 @@ const MyOrder = () => {
                 const remaining = orders.filter(order => order._id !== id)
                 setOrders(remaining);
             }
+            else{
+                alert('Failed to Delete');
+            }
         });
     }
 
@@ -43,9 +46,11 @@ const MyOrder = () => {
             <div className="all-products">
                 <div className="row container text-center">
                     {orders?.map((pd) => (
-                        <div className="col-md-6 col-lg-4">
+                        <div className="col-md-6 col-lg-4"
+                        key = {pd._id}
+                        >
                             <div className=" border border p-2 m-2">
-                                <img src={pd?.img} alt="" />
+                                <img src={pd?.img} className = 'img' alt="" />
                                 <h5>{pd?.name}</h5>
                                 <h5>{pd?.price}</h5>
                                 <h6>{pd?.description}</h6>

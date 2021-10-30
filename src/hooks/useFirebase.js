@@ -8,6 +8,8 @@ initializeAuthentication();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(true)
+
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -29,10 +31,12 @@ const useFirebase = () => {
     }
 
     const logOut = () => {
+        setIsLoading(true)
         signOut(auth)
         .then( () => {
             setUser({});
         })
+        .finally(() => setIsLoading(false));
     }
 
     const setUserName = (name) => {
@@ -51,6 +55,10 @@ const useFirebase = () => {
             if(user){
                 setUser(user);
             }
+            else{
+                setUser({})
+            }
+            setIsLoading(false)
         })
     }, [user]);
     return {
@@ -61,7 +69,9 @@ const useFirebase = () => {
         handleLogin,
         signInUsingGoogle,
         signInUsingGithub,
-        logOut
+        logOut,
+        isLoading,
+        setIsLoading
     }
 }
 export default useFirebase;

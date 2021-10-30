@@ -7,7 +7,7 @@ import MyOrder from '../../MyOrder/MyOrder';
 import './Dashboard.css';
 
 const Dashboard = () => {
-    const [control, setControl] = useState("");
+    const [control, setControl] = useState("addService");
 
     console.log(control);
     return (

@@ -11,33 +11,39 @@ const Login = () => {
     const [error, setError] = useState('');
 
 
-    const {signInUsingGoogle, handleLogin, signInUsingGithub} = useAuth();
+    const {signInUsingGoogle, handleLogin, signInUsingGithub, setIsLoading} = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_url = location.state?.from || "/home";
 
     const handleGoogleSignIn = () => {
+        setIsLoading(true)
         signInUsingGoogle()
         .then(result => {
             history.push(redirect_url)
         })
-        .catch(error => setError(error));
+        .catch(error => setError(error))
+        .finally(() => setIsLoading(false))
     }
      
     const handleGithubSignIn = () => {
         signInUsingGithub()
+        setIsLoading(true)
         .then(result => {
             history.push(redirect_url);
         })
-        .catch(error => setError(error));
+        .catch(error => setError(error))
+        .finally(() => setIsLoading(false))
     }
 
     const handleManualSignIn = () => {
         handleLogin(email, password)
+        setIsLoading(true)
         .then(result => {
             history.push(redirect_url);
         })
         .catch(error => setError(error.message))
+        .finally(() => setIsLoading(false))
     }
 
     const handleEmail = (e) => {
