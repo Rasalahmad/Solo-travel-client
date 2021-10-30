@@ -11,7 +11,7 @@ const Register = () => {
     const [name, setName] = useState([]);
     const [error, setError] = useState([]);
 
-    const {signInUsingGoogle, handleRegister, signInUsingGithub, setUserName} = useAuth();
+    const {signInUsingGoogle, handleRegister, signInUsingGithub, setUserName, setIsLoading} = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_url = location.state?.from || "/home"
@@ -20,16 +20,20 @@ const Register = () => {
         signInUsingGoogle()
         .then(result => {
             history.push(redirect_url);
+            setIsLoading(true)
         })
         .catch(error => setError(error.message))
+        .finally(() => setIsLoading(false))
     }
      
     const handleGithubSignup = () => {
         signInUsingGithub()
         .then(result => {
             history.push(redirect_url);
+            setIsLoading(true)
         })
         .catch(error => setError(error.message))
+        .finally(() => setIsLoading(false))
     }
 
     const handleManualSignup = () => {
@@ -37,8 +41,10 @@ const Register = () => {
         .then(result => {
             history.push(redirect_url);
             setUserName(name);
+            setIsLoading(true)
         })
         .catch(error => setError(error.message))
+        .finally(() => setIsLoading(false))
     }
 
     const handleEmail = (e) => {

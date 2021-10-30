@@ -17,10 +17,10 @@ const Login = () => {
     const redirect_url = location.state?.from || "/home";
 
     const handleGoogleSignIn = () => {
-        setIsLoading(true)
         signInUsingGoogle()
         .then(result => {
             history.push(redirect_url)
+            setIsLoading(true)
         })
         .catch(error => setError(error))
         .finally(() => setIsLoading(false))
@@ -28,9 +28,9 @@ const Login = () => {
      
     const handleGithubSignIn = () => {
         signInUsingGithub()
-        setIsLoading(true)
         .then(result => {
             history.push(redirect_url);
+            setIsLoading(true)
         })
         .catch(error => setError(error))
         .finally(() => setIsLoading(false))
@@ -38,9 +38,9 @@ const Login = () => {
 
     const handleManualSignIn = () => {
         handleLogin(email, password)
-        setIsLoading(true)
         .then(result => {
             history.push(redirect_url);
+            setIsLoading(true)
         })
         .catch(error => setError(error.message))
         .finally(() => setIsLoading(false))

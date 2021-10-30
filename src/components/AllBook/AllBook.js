@@ -11,21 +11,25 @@ const AllBook = () => {
             .then(data => setTotal(data))
     }, []);
 
-    const handleDelete = (id) => {
-        fetch(`http://localhost:5000/allBook/${id}`, {
-      method: "DELETE",
-      headers: { "content-type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount) {
-          alert('Deleted')
-        } else {
-          alert('Delete Failed')
-        }
-      });
-    console.log(id);
-
+    const handleDelete = id => {
+        console.log(id);
+        const url = `http://localhost:5000/allBook/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.deletedCount){
+                alert('Deleted Successfully')
+                const remaining = total.filter(tl => tl._id !== id)
+                setTotal(remaining);
+            }
+            else{
+                alert('Failed to Delete');
+            }
+            
+        })
     }
 
 

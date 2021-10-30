@@ -16,6 +16,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UserDetails from './components/UserDetails/UserDetails';
 import Dashboard from './components/Admin/Dashboard/Dashboard';
 import AllBook from './components/AllBook/AllBook';
+import Footer from './components/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
           <Dashboard></Dashboard>
         </Route>
       </Switch>
+      <Footer></Footer>
     </Router>
     </AuthProvider>
   );

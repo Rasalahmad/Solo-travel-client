@@ -31,12 +31,11 @@ const useFirebase = () => {
     }
 
     const logOut = () => {
-        setIsLoading(true)
         signOut(auth)
         .then( () => {
             setUser({});
         })
-        .finally(() => setIsLoading(false));
+        .catch(error => setError(error.message));
     }
 
     const setUserName = (name) => {

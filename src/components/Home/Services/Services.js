@@ -30,11 +30,11 @@ const Services = () => {
           .then((res) => res.json())
           .then((result) => {
             console.log(result);
-            if (result.insertedId) {
-              alert("Added Successfully");
-            } else {
-              alert("Fail to Add");
-            }
+            // if (result.insertedId) {
+            //   alert("Added Successfully");
+            // } else {
+            //   alert("Fail to Add");
+            // }
           });
       };
 
