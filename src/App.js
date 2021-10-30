@@ -8,10 +8,16 @@ import AddService from './components/AddService/AddService';
 import Header from './components/Shared/Header.js/Header';
 import Home from './components/Home/Home/Home';
 import Services from './components/Home/Services/Services';
+import MyOrder from './components/MyOrder/MyOrder';
+import Register from './components/Authentication/Register/Register';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import AuthProvider from './components/Context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
-    <Router>
+    <AuthProvider>
+      <Router>
       <Header></Header>
       <Switch>
         <Route exact path = '/'>
@@ -35,8 +41,18 @@ function App() {
         <Route path = '/selected'>
           <AddService></AddService>
         </Route>
+        <PrivateRoute path = '/myOrder'>
+          <MyOrder></MyOrder>
+        </PrivateRoute>
+        <Route path = '/register'>
+          <Register></Register>
+        </Route>
+        <Route path = '/placeOrder'>
+          <PlaceOrder></PlaceOrder>
+        </Route>
       </Switch>
     </Router>
+    </AuthProvider>
   );
 }
 

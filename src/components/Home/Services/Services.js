@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import './Servicers.css'
 
 const Services = () => {
+
+    const {user} = useAuth();
+    // console.log(user.email)
 
     const [services, setServices] = useState([]);
     
@@ -12,27 +17,33 @@ const Services = () => {
         .then(data => setServices(data));
     }, []);
 
-    const handleDelete = id => {
-        fetch(`http://localhost:5000/services/${id}`, {
-            method: 'DELETE'
+    
+
+    const handleAddToCard = (index) => {
+        const data = services[index];
+        data.email = user.email;
+        fetch(`http://localhost:5000/addOrders`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(data),
         })
-        .then(res => res.json())
-        .then(result => {
-            console.log(result)
-            if(result.deletedCount){
-                alert('Deleted Successfully')
-                const remaining = services.filter(service => service._id !== id)
-                setServices(remaining);
+          .then((res) => res.json())
+          .then((result) => {
+            console.log(result);
+            if (result.insertedId) {
+              alert("add hoise broooo ");
+            } else {
+              alert("add korte pari nai");
             }
-        });
-    }
+          });
+      };
 
     return (
         <div className = 'container'>
             <h2 className = 'text-center my-5'>Our Services</h2>
             <div className = 'row'>
                 {
-                    services.map(service => <div className = 'col-md-4 service'
+                    services.map((service, index) => <div className = 'col-md-4 service'
                     key = {service._id}
                     >
                     <img className = 'service-img' src={service?.img} alt="" />
@@ -40,7 +51,9 @@ const Services = () => {
                     <h4>{service?.offer.toString().toUpperCase()}</h4>
                     <p>{service?.description}</p>
                     <p>{service?.price}</p>
-                    <Button onClick = {() => handleDelete(service._id)} variant = 'danger'>Delete</Button>
+                    <Link to = '/myOrder'>
+                    <Button onClick = {() => handleAddToCard(index)} variant = 'warning'>Book Now</Button>
+                    </Link>
                 </div>)
                 }
             </div>
