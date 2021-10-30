@@ -31,9 +31,9 @@ const Services = () => {
           .then((result) => {
             console.log(result);
             if (result.insertedId) {
-              alert("add hoise broooo ");
+              alert("Added Successfully");
             } else {
-              alert("add korte pari nai");
+              alert("Fail to Add");
             }
           });
       };
@@ -47,8 +47,8 @@ const Services = () => {
                     key = {service._id}
                     >
                     <img className = 'service-img' src={service?.img} alt="" />
-                    <h2>{service?.name.toUpperCase()}</h2>
-                    <h4>{service?.offer.toString().toUpperCase()}</h4>
+                    <h2>{service?.name}</h2>
+                    <h4>{service?.offer}</h4>
                     <p>{service?.description}</p>
                     <p>{service?.price}</p>
                     <Link to = '/myOrder'>

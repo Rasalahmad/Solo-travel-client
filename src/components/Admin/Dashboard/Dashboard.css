@@ -1,0 +1,14 @@
+.title-site{
+    height: 80vh;
+    background-color: rgb(13, 83, 189);
+    color: #fff;
+}
+.title-site a{
+    display: block;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 35px;
+    background-color: violet;
+    padding: 5px;
+}

@@ -13,6 +13,9 @@ import Register from './components/Authentication/Register/Register';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 import AuthProvider from './components/Context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import UserDetails from './components/UserDetails/UserDetails';
+import Dashboard from './components/Admin/Dashboard/Dashboard';
+import AllBook from './components/AllBook/AllBook';
 
 function App() {
   return (
@@ -44,11 +47,20 @@ function App() {
         <PrivateRoute path = '/myOrder'>
           <MyOrder></MyOrder>
         </PrivateRoute>
+        <PrivateRoute path = '/allBook'>
+          <AllBook></AllBook>
+        </PrivateRoute>
         <Route path = '/register'>
           <Register></Register>
         </Route>
         <Route path = '/placeOrder'>
           <PlaceOrder></PlaceOrder>
+        </Route>
+        <Route path = '/userDetails'>
+          <UserDetails></UserDetails>
+        </Route>
+        <Route path = '/dashboard'>
+          <Dashboard></Dashboard>
         </Route>
       </Switch>
     </Router>
