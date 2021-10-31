@@ -13,7 +13,7 @@ const AllBook = () => {
 
     const handleDelete = id => {
         console.log(id);
-        const url = `https://protected-cliffs-33011.herokuapp.com/${id}`;
+        const url = `https://protected-cliffs-33011.herokuapp.com/allBook/${id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -33,7 +33,7 @@ const AllBook = () => {
     };
     const handleApproved = id => {
         // console.log(id);
-        fetch(`https://protected-cliffs-33011.herokuapp.com/${id}`, {
+        fetch(`https://protected-cliffs-33011.herokuapp.com/update/${id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
     //   body: JSON.stringify(id),

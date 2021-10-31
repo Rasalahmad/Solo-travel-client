@@ -13,15 +13,20 @@ const MyOrder = () => {
     const [orders, setOrders] = useState([])
     // const email = {user?.email};
     useEffect(() => {
-        fetch(`https://protected-cliffs-33011.herokuapp.com/${user?.email}`)
+        fetch(`https://protected-cliffs-33011.herokuapp.com/myOrders/${user?.email}`)
             .then((res) => res.json())
-            .then((data) => setOrders(data));
+            .then((data) => {
+                setOrders(data)
+                if(data){
+                    // window.location.reload();
+                }
+            });
     }, [user?.email]);
     // console.log(orders);
 
 
     const handleDelete = id => {
-        fetch(`https://protected-cliffs-33011.herokuapp.com/${id}`, {
+        fetch(`https://protected-cliffs-33011.herokuapp.com/deleteOrder/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
