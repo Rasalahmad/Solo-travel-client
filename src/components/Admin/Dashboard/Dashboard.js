@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import AddService from '../../AddService/AddService';
 import AllBook from '../../AllBook/AllBook';
 import MyOrder from '../../MyOrder/MyOrder';
-import './Dashboard.css';
+import "./Dashboard.css";
 
 const Dashboard = () => {
     const [control, setControl] = useState("addService");
@@ -13,12 +13,12 @@ const Dashboard = () => {
     return (
 
         <div className="admin-container">
+        <h2 className = 'dash-head'>Welcome to Dashboard</h2>
       <div className="dashboard">
         <div className="admin-box">
           <div className="row admin-container">
             <div className="col-md-3 ">
               <div className="admin-area p-1">
-                <h6>Dashboard</h6>
                 <div className="all-menu mt-5">
                   <li
                     onClick={() => setControl("addService")}
@@ -41,7 +41,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-9 text-center  text-center">
+            <div className="col-md-9 text-center">
               {control === "addService" && <AddService></AddService>}
               {control === "myOrder" && <MyOrder></MyOrder>}
               {control === "allBook" && <AllBook></AllBook>}
@@ -50,28 +50,6 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
-
-
-        // <div className = 'text-center container'>
-        //     <h2>Dashboard</h2>
-        //     <div className = 'row'>
-        //         <div className = 'col-md-4 title-site'>
-        //             <Link to = 'addService'>
-        //                 Add Place
-        //             </Link>
-        //             <Link to = 'myOrder'>
-        //                 My Book
-        //             </Link>
-        //             <Link to = 'allBook'>
-        //                 All Booked
-        //             </Link>
-        //         </div>
-        //         <div className = 'col-md-8'>
-        //             <h2>Details</h2>
-        //             <AddService></AddService>
-        //         </div>
-        //     </div>
-        // </div>
     );
 };
 

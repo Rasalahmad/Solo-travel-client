@@ -6,14 +6,14 @@ import { Table } from 'react-bootstrap';
 const AllBook = () => {
     const [total, setTotal] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/allBook')
+        fetch('https://protected-cliffs-33011.herokuapp.com/allBook')
             .then(res => res.json())
             .then(data => setTotal(data))
     }, []);
 
     const handleDelete = id => {
         console.log(id);
-        const url = `http://localhost:5000/allBook/${id}`;
+        const url = `https://protected-cliffs-33011.herokuapp.com/${id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -30,6 +30,23 @@ const AllBook = () => {
             }
             
         })
+    };
+    const handleApproved = id => {
+        // console.log(id);
+        fetch(`https://protected-cliffs-33011.herokuapp.com/${id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(id),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.modifiedCount) {
+        //   setIsUpdated(true);
+        } else {
+        //   setIsUpdated(false);
+        }
+      });
+    // console.log(data);
     }
 
 
@@ -47,7 +64,7 @@ const AllBook = () => {
                                 <th>Place</th>
                                 <th>Type</th>
                                 <th>Email</th>
-                                <th>Action</th>
+                                <th colSpan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,6 +75,9 @@ const AllBook = () => {
                                 <td>{tl?.email}</td>
                                 <td>
                                     <button onClick = {() => handleDelete(tl._id)} className = 'btn btn-danger'>Delete</button>
+                                </td>
+                                <td>
+                                    <button onClick = {() => handleApproved(tl._id)} className = 'btn btn-success'>Approve</button>
                                 </td>
                             </tr>
                         </tbody>

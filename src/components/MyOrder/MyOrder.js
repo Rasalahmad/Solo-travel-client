@@ -13,7 +13,7 @@ const MyOrder = () => {
     const [orders, setOrders] = useState([])
     // const email = {user?.email};
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrders/${user?.email}`)
+        fetch(`https://protected-cliffs-33011.herokuapp.com/${user?.email}`)
             .then((res) => res.json())
             .then((data) => setOrders(data));
     }, [user?.email]);
@@ -21,7 +21,7 @@ const MyOrder = () => {
 
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://protected-cliffs-33011.herokuapp.com/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
@@ -54,6 +54,7 @@ const MyOrder = () => {
                                 <h5>{pd?.name}</h5>
                                 <h5>{pd?.price}</h5>
                                 <h6>{pd?.description}</h6>
+                                <Button variant = 'warning' className = 'm-2'>{pd?.status}</Button>
                                 <Button onClick = {() => handleDelete(pd._id)} variant = 'danger'>Cancel</Button>
                             </div>
                         </div>

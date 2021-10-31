@@ -12,7 +12,7 @@ const Services = () => {
     const [services, setServices] = useState([]);
     
     useEffect( () => {
-        fetch('http://localhost:5000/services')
+        fetch('https://protected-cliffs-33011.herokuapp.com/services')
         .then(res => res.json())
         .then(data => setServices(data));
     }, []);
@@ -22,7 +22,8 @@ const Services = () => {
     const handleAddToCard = (index) => {
         const data = services[index];
         data.email = user.email;
-        fetch(`http://localhost:5000/addOrders`, {
+        data.status = 'pending';
+        fetch(`https://protected-cliffs-33011.herokuapp.com/addOrders`, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(data),

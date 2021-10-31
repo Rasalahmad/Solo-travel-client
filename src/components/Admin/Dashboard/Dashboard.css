@@ -1,14 +1,21 @@
-.title-site{
-    height: 80vh;
-    background-color: rgb(13, 83, 189);
+.dash-head{
+    text-align: center;
+    background-color: blue;
     color: #fff;
+    padding: 10px;
+    width: 50%;
+    margin: 50px auto;
 }
-.title-site a{
-    display: block;
-    text-decoration: none;
-    font-size: 18px;
+
+.all-menu{
+    height: 500px;
+    background-color: blue;
+    text-align: center;
     color: #fff;
-    margin-top: 35px;
-    background-color: violet;
-    padding: 5px;
+    font-size: 18px;
+}
+
+.all-menu li{
+    list-style: none;
+    cursor: pointer;
 }

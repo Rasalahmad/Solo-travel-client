@@ -7,13 +7,15 @@ const UserDetails = () => {
     const { user } = useAuth();
     const {
         register,
+        reset,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
     const onSubmit = (data) => {
         console.log(data);
-        alert('Your Order has been placed')
+        alert('Your Order has been placed');
+        reset();
     };
 
     return (

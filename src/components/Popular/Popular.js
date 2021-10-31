@@ -6,7 +6,7 @@ const Popular = () => {
     const [places, setPlaces] = useState([])
 
         useEffect( () => {
-        fetch('http://localhost:5000/popular')
+        fetch('https://protected-cliffs-33011.herokuapp.com/popular')
         .then(res => res.json())
         .then(data => setPlaces(data))
     }, [])

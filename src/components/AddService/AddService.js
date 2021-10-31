@@ -13,7 +13,7 @@ const AddService = () => {
       const onSubmit = (data) => {
         //   console.log(data);
         // data.email = user?.email;
-        fetch("http://localhost:5000/addEvent", {
+        fetch("https://protected-cliffs-33011.herokuapp.com/addEvent", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(data),

@@ -59,7 +59,7 @@ const useFirebase = () => {
             }
             setIsLoading(false)
         })
-    }, [user]);
+    }, []);
     return {
         user,
         error,
