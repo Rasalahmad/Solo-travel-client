@@ -12,26 +12,29 @@ const AllBook = () => {
     }, []);
 
     const handleDelete = id => {
-        console.log(id);
-        const url = `https://protected-cliffs-33011.herokuapp.com/allBook/${id}`;
-        fetch(url, {
-            method: "PUT",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(total.status),
-          })
-            .then((res) => res.json())
-            .then((result) => {
-              if (result.modifiedCount) {
-                alert('Approved')
-              }
-            });
+        // console.log(id);
+        fetch(`https://protected-cliffs-33011.herokuapp.com/allBook/${id}`, {
+            method: 'DELETE',
+        })
+        .then(res => res.json())
+        .then(result => {
+            console.log(result)
+            if(result.deletedCount){
+                alert('Deleted Successfully')
+                const remaining = total.filter(order => order._id !== id)
+                setTotal(remaining);
+            }
+            else{
+                alert('Failed to Delete');
+            }
+        });
     };
     const handleApproved = id => {
         // console.log(id);
         fetch(`https://protected-cliffs-33011.herokuapp.com/update/${id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(id),
+      body: JSON.stringify(total.status),
     })
       .then((res) => res.json())
       .then((result) => {
