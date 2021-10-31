@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import './Servicers.css'
@@ -15,7 +15,7 @@ const Services = () => {
         fetch('https://protected-cliffs-33011.herokuapp.com/services')
         .then(res => res.json())
         .then(data => setServices(data));
-    }, [user]);
+    }, [user.email]);
 
     
 
@@ -35,13 +35,14 @@ const Services = () => {
                 const remaining = services.filter(service => service._id !== id)
                 setServices(remaining);
             }
-          });
+          })
+          .catch((error) => alert(error.message))
       };
 
     return (
         <div className = 'container'>
             <h2 className = 'text-center my-5'>Our Services</h2>
-            <div className = 'row'>
+            {services ? (<div className = 'row'>
                 {
                     services.map((service, index) => <div className = 'col-md-4 service'
                     key = {service._id}
@@ -56,7 +57,7 @@ const Services = () => {
                     </Link>
                 </div>)
                 }
-            </div>
+            </div>): (<Spinner animation="border" variant="success" />)}
         </div>
     );
 };

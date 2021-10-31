@@ -16,9 +16,9 @@ const MyOrder = () => {
         fetch(`https://protected-cliffs-33011.herokuapp.com/myOrders/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
-                setOrders(data)
+                // setOrders(data)
                 if(data){
-                    // window.location.reload();
+                    
                 }
             });
     }, [user]);
