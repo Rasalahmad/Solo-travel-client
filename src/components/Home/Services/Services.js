@@ -19,7 +19,7 @@ const Services = () => {
 
     
 
-    const handleAddToCard = (index) => {
+    const handleAddToCard = (index, id) => {
         const data = services[index];
         data.email = user.email;
         data.status = 'pending';
@@ -31,6 +31,10 @@ const Services = () => {
           .then((res) => res.json())
           .then((result) => {
             console.log(result);
+            if(result.insertedId){
+                const remaining = services.filter(service => service._id !== id)
+                setServices(remaining);
+            }
           });
       };
 
@@ -48,7 +52,7 @@ const Services = () => {
                     <p>{service?.description}</p>
                     <p>{service?.price}</p>
                     <Link to = '/myOrder'>
-                    <Button onClick = {() => handleAddToCard(index)} variant = 'warning'>Book Now</Button>
+                    <Button onClick = {() => handleAddToCard(index, service._id)} variant = 'warning'>Book Now</Button>
                     </Link>
                 </div>)
                 }

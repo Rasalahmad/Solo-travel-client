@@ -15,21 +15,16 @@ const AllBook = () => {
         console.log(id);
         const url = `https://protected-cliffs-33011.herokuapp.com/allBook/${id}`;
         fetch(url, {
-            method: 'DELETE'
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.deletedCount){
-                alert('Deleted Successfully')
-                const remaining = total.filter(tl => tl._id !== id)
-                setTotal(remaining);
-            }
-            else{
-                alert('Failed to Delete');
-            }
-            
-        })
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(total.status),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result.modifiedCount) {
+                alert('Approved')
+              }
+            });
     };
     const handleApproved = id => {
         // console.log(id);
