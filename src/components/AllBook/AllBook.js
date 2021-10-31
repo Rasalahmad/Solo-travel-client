@@ -39,9 +39,9 @@ const AllBook = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.modifiedCount) {
-        //   setIsUpdated(true);
+            alert('Approved')
         } else {
-        //   setIsUpdated(false);
+            alert('Rejected');
         }
       });
     // console.log(data);

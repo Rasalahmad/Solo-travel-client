@@ -21,7 +21,7 @@ const MyOrder = () => {
                     // window.location.reload();
                 }
             });
-    }, []);
+    }, [user]);
     // console.log(orders);
 
 
