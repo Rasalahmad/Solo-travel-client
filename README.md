@@ -4,9 +4,9 @@ Project Link (https://solo-travel-96100.web.app/).
 
 ## Functionality
 
-● A Full Stack responsive website for mobile and desktop with React. All data is loaded by MongoDB.
-● Users can book any service, can update a product status, and delete their own order.
-● Google Firebase Authentication system has been added for user authentication.
+* A Full Stack responsive website for mobile and desktop with React. All data is loaded by MongoDB.
+* Users can book any service, can update a product status, and delete their own order.
+* Google Firebase Authentication system has been added for user authentication.
 * If user want o book our plan he/she must make an account in website. if user have already an account he/she can directly login.
 * After booking user can see his/her booking list which user already book and user can cencel his/her booking if you want. 
 * If user book a plan it will go to pending and if admin approved this plan will be ready to go.
@@ -14,7 +14,14 @@ Project Link (https://solo-travel-96100.web.app/).
 
 
 
-Technology Used: React, MongoDB, Node, Express, Firebase, Bootstrap, Sweetalert, etc.
+Technology Used:
+* React
+* MongoDB
+* Node
+* Express
+* Firebase
+* Bootstrap
+* Sweetalert etc.
 
 
 ### `npm start`
